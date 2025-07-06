@@ -3,8 +3,6 @@
 with pkgs; [ 
   vim
   tmux
-  alacritty
-  mkalias
   google-chrome
   python3
   virtualenv
@@ -13,5 +11,10 @@ with pkgs; [
   tree
   direnv
   nix-direnv
+  iterm2
+  minikube
+  kubectl
+  kubernetes-helm
+  k9s
 ]
 

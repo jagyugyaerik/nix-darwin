@@ -5,4 +5,5 @@ _:
     "visual-studio-code"
     "vlc"
     "google-chrome"
+    "transmission"
 ]
