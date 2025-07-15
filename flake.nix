@@ -15,9 +15,13 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, homebrew-core, homebrew-cask, ... }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, homebrew-core, homebrew-cask, home-manager, ... }:
   let
     configuration = { pkgs, config, lib, ... }: {
 
@@ -44,6 +48,8 @@
         ];
         masApps = {
           "WhatsApp Messenger" = 310633997;                              
+          "Be Focused - Pomodoro Timer" = 973134470;
+          "iMovie" = 408981434;
         };
         onActivation = {
           cleanup = "zap";
@@ -57,7 +63,11 @@
       nix.settings.experimental-features = "nix-command flakes";
 
       # Enable alternative shell support in nix-darwin.
-      programs.zsh.enable = true;
+      programs.zsh = {
+        enable = true;
+        enableFzfHistory = true;
+        enableSyntaxHighlighting = true;
+      };
 
       system = {
         configurationRevision = self.rev or self.dirtyRev or null;
@@ -89,7 +99,10 @@
             orientation = "bottom";
             tilesize = 48;
             persistent-apps = [
-              "/System/Application/Calendar.app/"
+              "/System/Applications/Calendar.app/"
+              "/Applications/Google\ Chrome.app"
+              "/Applications/iTerm.app"
+              "/Applications/Visual\ Studio\ Code.app"
             ];
           };
 
@@ -133,7 +146,6 @@
                       };
 
                       mutableTaps = false;
-
                       autoMigrate = true;
                     };
                   }

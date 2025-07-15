@@ -3,18 +3,34 @@
 with pkgs; [ 
   vim
   tmux
-  google-chrome
+
+  git
+  git-crypt
+  pre-commit
+  gnupg
+
   python3
   virtualenv
-  zsh-powerlevel10k
+  
   jq
+  fzf
   tree
   direnv
   nix-direnv
-  iterm2
-  minikube
-  kubectl
-  kubernetes-helm
+  
+  # Shell
+  zsh
+  zsh-autosuggestions
+  zsh-nix-shell
+  zsh-syntax-highlighting
+
+  # K8s
   k9s
+  kustomize
+  kubectl
+  minikube
+  kubernetes-helm
+  (google-cloud-sdk.withExtraComponents
+    [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
 ]
 

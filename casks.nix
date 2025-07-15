@@ -6,4 +6,6 @@ _:
     "vlc"
     "google-chrome"
     "transmission"
+    "iterm2"
+    "stats"
 ]
